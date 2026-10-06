@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synonym Hangman</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-badge">S</div>
+          <div>
+            <p class="eyebrow">Jeu</p>
+            <h1>Synonym Hangman</h1>
+          </div>
+        </div>
+        <div class="score-panel">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <section class="board" aria-label="Zone du jeu">
+          <div class="gallows-wrap">
+            <svg class="gallows" viewBox="0 0 220 260" aria-hidden="true">
+              <g class="gallows-structure">
+                <line x1="60" y1="230" x2="170" y2="230" />
+                <line x1="90" y1="230" x2="90" y2="40" />
+                <line x1="90" y1="40" x2="160" y2="40" />
+                <line x1="160" y1="40" x2="160" y2="60" />
+              </g>
+              <g id="hangman-parts" class="hangman-parts">
+                <circle cx="160" cy="85" r="22" class="part part-head" />
+                <line x1="160" y1="107" x2="160" y2="150" class="part part-body" />
+                <line x1="160" y1="120" x2="130" y2="140" class="part part-left-arm" />
+                <line x1="160" y1="120" x2="190" y2="140" class="part part-right-arm" />
+                <line x1="160" y1="150" x2="135" y2="190" class="part part-left-leg" />
+                <line x1="160" y1="150" x2="185" y2="190" class="part part-right-leg" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="game-panel">
+            <div class="clue-box">
+              <span class="label">À trouver</span>
+              <p id="clueText">Synonyme de SUCCEED</p>
+            </div>
+
+            <div class="word-box">
+              <p id="wordDisplay" class="word-display" aria-live="polite">_ _ _ _ _ _</p>
+            </div>
+
+            <div class="input-row">
+              <label class="sr-only" for="letterGuess">Choisir une lettre</label>
+              <input id="letterGuess" type="text" maxlength="1" aria-label="Lettre" placeholder="A" />
+              <button id="guessLetterBtn" class="primary-btn">Valider</button>
+            </div>
+
+            <div class="input-row word-guess-row">
+              <label class="sr-only" for="wordGuess">Proposer un mot</label>
+              <input id="wordGuess" type="text" aria-label="Mot complet" placeholder="Mot complet" />
+              <button id="guessWordBtn" class="secondary-btn">Mot entier</button>
+            </div>
+
+            <div class="feedback-area">
+              <p id="statusMessage">Bonne chance !</p>
+              <div id="messageOverlay" class="message-overlay hidden" aria-live="assertive">
+                <div class="overlay-card">
+                  <img id="overlayImage" src="" alt="" />
+                  <h2 id="overlayTitle">BRAVO</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button id="newRoundBtn" class="primary-btn">Nouvelle manche</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side-panel">
+          <div class="card music-card">
+            <h2>Musique de fond</h2>
+            <label class="file-picker" for="musicUpload">
+              <span>Choisir un fichier MP3</span>
+              <input id="musicUpload" type="file" accept=".mp3,audio/mpeg" />
+            </label>
+            <button id="toggleMusicBtn" class="secondary-btn full-width">Lecture</button>
+          </div>
+
+          <div class="card rules-card">
+            <h2>Règles</h2>
+            <ul>
+              <li>Devinez le synonyme caché.</li>
+              <li>Une bonne réponse: +1 point.</li>
+              <li>Une mauvaise réponse: -1 point.</li>
+              <li>Le mot est en majuscules.</li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
